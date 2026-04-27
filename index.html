@@ -3,37 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Mathieu Lecointre</title>
+    <title>Mathieu Lecointre | Accueil</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
 </head>
-<body class="home-body">
-    <div class="scanlines"></div>
+<body>
 
-    <div class="container">
-        <header class="hero-section">
-            <div class="system-status">
-                <span class="status-dot"></span> SYSTEM_ONLINE
+    <nav class="navbar">
+        <div class="nav-links">
+            <a href="index.html" class="active">Accueil</a>
+            <a href="Pages/realisations.html">Projets & Expériences</a>
+            <a href="Pages/competences.html">Compétences</a>
+            <a href="Pages/contact.html">Contact</a>
+        </div>
+        <button id="theme-toggle" aria-label="Changer le thème">🌙</button>
+    </nav>
+
+    <main>
+        <section class="section-container" style="display: flex; align-items: center; gap: 40px; min-height: 60vh;">
+            <div style="flex: 1;">
+                <h1 style="font-family: var(--font-title); font-size: 4rem; text-transform: uppercase; line-height: 1;">Mathieu Lecointre</h1>
+                <h2 style="font-size: 1.5rem; color: var(--text-muted); margin: 15px 0 25px 0; font-weight: 400;">Développeur Front-End & Créatif</h2>
+                <p style="margin-bottom: 30px; font-size: 1.1rem;">
+                    Étudiant en BUT Informatique. Je conçois des interfaces web alliant la rigueur du code à un design percutant et accessible. 
+                </p>
+                <div style="display: flex; gap: 15px;">
+                    <a href="Pages/realisations.html" class="btn">Voir mes projets</a>
+                    <a href="CV_2026.pdf" target="_blank" class="btn" style="background: var(--card-bg); color: var(--text-color);">Mon CV</a>
+                </div>
             </div>
-            
-            <h1 class="glitch" data-text="Mathieu Lecointre">
-                Mathieu Lecointre
-            </h1>
-            
-            <h2 class="subtitle">Développeur Front-End & Créatif</h2>
-            
-            <div class="terminal-box">
-                <p id="typewriter"></p><span class="cursor">_</span>
+            <div>
+                <img src="images/photo-profil.jpg" alt="Mathieu" style="width: 250px; height: 250px; border-radius: 50%; border: 4px solid var(--border-color); box-shadow: 8px 8px 0px var(--accent-color); object-fit: cover;">
             </div>
+        </section>
 
-            <nav class="cyber-nav">
-                <a href="Pages/projets.html" class="cyber-button">EXPLORER_PROJETS</a>
-                <a href="Pages/CV.html" class="cyber-button">ACCÉDER_AU_LORE</a>
-            </nav>
-        </header>
-    </div>
+        <section class="section-container">
+            <h2 class="section-title">Mon Parcours</h2>
+            <div class="card" style="padding: 40px;">
+                <div class="timeline-item">
+                    <p class="timeline-date">En cours | IUT</p>
+                    <h3 style="margin: 5px 0; font-family: var(--font-title);">BUT Informatique</h3>
+                    <p style="margin: 0;">Parcours Développement d'Applications. Conception, développement, et déploiement de solutions logicielles complètes.</p>
+                </div>
+                
+                <div class="timeline-item" style="margin-bottom: 0;">
+                    <p class="timeline-date">Obtenu</p>
+                    <h3 style="margin: 5px 0; font-family: var(--font-title);">Baccalauréat STI2D</h3>
+                    <p style="margin: 0;">Sciences et Technologies de l'Industrie et du Développement Durable. Acquisition de solides bases techniques, logiques et analytiques.</p>
+                </div>
+            </div>
+        </section>
+    </main>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <footer class="footer">
+        <p>© 2026 Mathieu Lecointre. Tous droits réservés.</p>
+    </footer>
+
     <script src="script.js"></script>
 </body>
 </html>

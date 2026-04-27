@@ -1,315 +1,208 @@
 /* =========================================
-   VARIABLES CYBERPUNK
+   VARIABLES & THÈMES
    ========================================= */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oswald:wght@500;700&family=Fira+Code:wght@400;500&display=swap');
+
 :root {
-    --bg-color: #050505;
-    --text-main: #e0e0e0;
-    --neon-cyan: #00f3ff;
-    --neon-pink: #ff003c;
-    --neon-yellow: #fcee0a;
-    --font-mono: 'Share Tech Mono', monospace;
+    /* Mode Clair */
+    --bg-color: #fdfdfd;
+    --text-color: #1a1a1a;
+    --text-muted: #555555;
+    --card-bg: #ffffff;
+    --border-color: #1a1a1a; /* Bordures noires type comics */
+    --accent-color: #ED1D24; /* Rouge Marvel */
+    --accent-hover: #b9151c;
+    
+    --font-main: 'Inter', sans-serif;
+    --font-title: 'Oswald', sans-serif;
+    --font-nav: 'Fira Code', monospace; /* Police dev pour la navbar */
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+[data-theme="dark"] {
+    /* Mode Sombre */
+    --bg-color: #121212;
+    --text-color: #f3f4f6;
+    --text-muted: #9ca3af;
+    --card-bg: #1e1e1e;
+    --border-color: #4b5563;
+    --accent-color: #ff474d; 
+    --accent-hover: #ED1D24;
 }
 
-/* =========================================
-   STYLES GLOBAUX (Partagés sur toutes les pages)
-   ========================================= */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
 body {
     background-color: var(--bg-color);
-    color: var(--text-main);
-    font-family: var(--font-mono);
-}
-
-.scanlines {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-    background-size: 100% 4px, 6px 100%;
-    z-index: 1;
-    pointer-events: none;
-}
-
-.system-status {
-    color: var(--neon-cyan);
-    font-size: 0.9rem;
+    color: var(--text-color);
+    font-family: var(--font-main);
+    line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
     display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.status-dot {
-    width: 10px;
-    height: 10px;
-    background-color: var(--neon-cyan);
-    border-radius: 50%;
-    box-shadow: 0 0 10px var(--neon-cyan);
-    animation: blink 1.5s infinite;
-}
-
-@keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
-}
-
-.subtitle {
-    font-size: 1.5rem;
-    color: var(--neon-pink);
-    text-shadow: 0 0 5px var(--neon-pink);
-}
-
-.cyber-button {
-    padding: 10px 20px;
-    border: 1px solid var(--neon-cyan);
-    color: var(--neon-cyan);
-    text-decoration: none;
-    text-transform: uppercase;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    letter-spacing: 2px;
-    display: inline-block;
-}
-
-.cyber-button:hover {
-    background-color: var(--neon-cyan);
-    color: var(--bg-color);
-    box-shadow: 0 0 15px var(--neon-cyan);
-}
-
-/* --- EFFET GLITCH --- */
-.glitch {
-    font-size: 4rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    position: relative;
-    color: white;
-    text-shadow: 0 0 10px var(--neon-cyan);
-    margin-bottom: 10px;
-}
-
-.glitch::before, .glitch::after {
-    content: attr(data-text);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--bg-color);
-}
-
-.glitch::before {
-    left: 2px;
-    text-shadow: -2px 0 var(--neon-pink);
-    clip: rect(24px, 550px, 90px, 0);
-    animation: glitch-anim-2 3s infinite linear alternate-reverse;
-}
-
-.glitch::after {
-    left: -2px;
-    text-shadow: -2px 0 var(--neon-cyan);
-    clip: rect(85px, 550px, 140px, 0);
-    animation: glitch-anim 2.5s infinite linear alternate-reverse;
-}
-
-@keyframes glitch-anim {
-    0% { clip: rect(10px, 9999px, 44px, 0); }
-    20% { clip: rect(85px, 9999px, 59px, 0); }
-    40% { clip: rect(14px, 9999px, 98px, 0); }
-    60% { clip: rect(98px, 9999px, 13px, 0); }
-    80% { clip: rect(43px, 9999px, 5px, 0); }
-    100% { clip: rect(1px, 9999px, 88px, 0); }
-}
-
-@keyframes glitch-anim-2 {
-    0% { clip: rect(65px, 9999px, 100px, 0); }
-    20% { clip: rect(3px, 9999px, 25px, 0); }
-    40% { clip: rect(88px, 9999px, 66px, 0); }
-    60% { clip: rect(12px, 9999px, 95px, 0); }
-    80% { clip: rect(54px, 9999px, 18px, 0); }
-    100% { clip: rect(90px, 9999px, 45px, 0); }
-}
-
-/* =========================================
-   PAGE D'ACCUEIL (home-body)
-   ========================================= */
-.home-body {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: auto; 
-}
-
-.home-body .container {
-    position: relative;
-    z-index: 10;
-    text-align: center;
-}
-
-.home-body .system-status {
-    justify-content: center;
-    margin-bottom: 20px;
-}
-
-.home-body .subtitle {
-    margin-bottom: 30px;
-}
-
-.terminal-box {
-    margin: 20px auto 40px auto;
-    max-width: 600px;
-    height: 60px;
-    color: var(--neon-yellow);
-    font-size: 1.1rem;
-    display: flex;
-    justify-content: center;
-}
-
-.cursor {
-    display: inline-block;
-    width: 10px;
-    background-color: var(--neon-yellow);
-    animation: blink 1s infinite;
-    margin-left: 5px;
-}
-
-.cyber-nav {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-}
-
-/* =========================================
-   PAGE PROJETS (projects-body)
-   ========================================= */
-.projects-body {
-    height: auto;
+    flex-direction: column;
     min-height: 100vh;
-    overflow-y: auto; /* Autorise le scroll */
-    overflow-x: hidden;
-    padding-bottom: 50px;
 }
 
-.top-nav {
+main { flex-grow: 1; }
+
+/* =========================================
+   NAVIGATION (Basée sur ton image)
+   ========================================= */
+.navbar {
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* Centré comme sur ton image */
     align-items: center;
-    padding: 30px 50px;
+    padding: 25px 5vw;
+    background-color: var(--bg-color);
     position: relative;
-    z-index: 10;
+    border-bottom: 2px solid var(--border-color);
 }
 
-.cyber-link {
-    color: var(--neon-cyan);
+.nav-links {
+    display: flex;
+    gap: 40px;
+    font-family: var(--font-nav);
+    font-size: 1rem;
+}
+
+.nav-links a {
     text-decoration: none;
-    font-size: 1.1rem;
-    transition: text-shadow 0.3s;
-}
-.cyber-link:hover {
-    text-shadow: 0 0 8px var(--neon-cyan);
+    color: var(--text-color);
+    padding-bottom: 5px;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
 }
 
-.projects-container {
-    max-width: 1200px;
+.nav-links a:hover { color: var(--accent-color); }
+
+/* La page active (Le trait en dessous) */
+.nav-links a.active {
+    color: var(--accent-color);
+    border-bottom: 2px solid var(--accent-color);
+}
+
+#theme-toggle {
+    position: absolute;
+    right: 5vw;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 5px;
+}
+
+/* =========================================
+   SECTIONS & LAYOUT GLOBAUX
+   ========================================= */
+.section-container {
+    max-width: 1000px;
     margin: 0 auto;
-    padding: 0 20px;
-    position: relative;
-    z-index: 10;
+    padding: 60px 20px;
 }
 
-.projects-header {
-    text-align: center;
-    margin-bottom: 60px;
-    margin-top: 40px;
+.section-title {
+    font-family: var(--font-title);
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    border-left: 6px solid var(--accent-color);
+    padding-left: 15px;
 }
 
-.projects-header .glitch {
-    font-size: 2.5rem; /* Glitch plus petit pour le titre de page */
-}
-
-/* --- GRILLE DES CARTES --- */
-.projects-grid {
+/* =========================================
+   CARTES (Style Comics)
+   ========================================= */
+.grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
 }
 
-.project-card {
-    background: rgba(20, 20, 20, 0.8);
-    border: 1px solid #333;
+.card {
+    background-color: var(--card-bg);
+    border: 3px solid var(--border-color);
     border-radius: 8px;
     padding: 30px;
-    position: relative;
-    transition: transform 0.3s ease, border-color 0.3s ease;
+    /* Ombre solide décalée typique des comics */
+    box-shadow: 6px 6px 0px var(--border-color);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
     display: flex;
     flex-direction: column;
 }
 
-.project-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--neon-cyan);
+.card:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 10px 10px 0px var(--accent-color);
+    border-color: var(--accent-color);
 }
 
-.card-glow {
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    border-radius: 8px;
-    box-shadow: 0 0 20px rgba(0, 243, 255, 0);
-    transition: box-shadow 0.3s ease;
-    pointer-events: none;
-}
-.project-card:hover .card-glow {
-    box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
-}
-
-.project-content {
-    position: relative;
-    z-index: 2;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.project-title {
-    color: white;
+.card h3 {
+    font-family: var(--font-title);
     font-size: 1.5rem;
     margin-bottom: 15px;
 }
 
-.project-desc {
-    color: #a0a0a0;
-    line-height: 1.6;
-    margin-bottom: 25px;
-    flex-grow: 1;
+.card p { color: var(--text-muted); flex-grow: 1; margin-bottom: 20px; }
+
+/* =========================================
+   BOUTONS & BADGES
+   ========================================= */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--accent-color);
+    color: white;
+    text-decoration: none;
+    font-family: var(--font-title);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 4px;
+    border: 2px solid var(--border-color);
+    box-shadow: 4px 4px 0px var(--border-color);
+    transition: all 0.2s ease;
+    text-align: center;
 }
 
-/* --- BADGES TECHNOLOGIES --- */
-.tech-stack {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 25px;
+.btn:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px var(--border-color);
+    color: white;
 }
 
-.tech-badge {
-    background: rgba(0, 243, 255, 0.1);
-    color: var(--neon-cyan);
-    border: 1px solid rgba(0, 243, 255, 0.3);
-    padding: 5px 12px;
-    border-radius: 20px;
-    font-size: 0.85rem;
+.badges { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
+.badge {
+    background: var(--bg-color); border: 2px solid var(--border-color);
+    padding: 5px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 500;
 }
 
-.small-btn {
-    align-self: flex-start;
+/* =========================================
+   TIMELINE (Parcours) & Jauges
+   ========================================= */
+.timeline-item {
+    border-left: 3px solid var(--border-color);
+    padding-left: 20px;
+    position: relative;
+    margin-bottom: 30px;
+}
+.timeline-item::before {
+    content: ''; position: absolute; left: -11px; top: 5px; width: 16px; height: 16px;
+    background-color: var(--accent-color); border: 3px solid var(--card-bg); border-radius: 50%;
+}
+.timeline-date { font-family: var(--font-nav); color: var(--accent-color); font-size: 0.9rem; font-weight: bold; }
+
+.skill-box { margin-bottom: 20px; }
+.skill-name { display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 8px; }
+.skill-bar { width: 100%; height: 10px; background: var(--bg-color); border: 2px solid var(--border-color); border-radius: 5px; overflow: hidden; }
+.skill-fill { height: 100%; background: var(--accent-color); }
+
+/* =========================================
+   FOOTER
+   ========================================= */
+.footer {
+    text-align: center;
+    padding: 30px;
+    border-top: 2px solid var(--border-color);
+    background-color: var(--card-bg);
+    margin-top: 40px;
+    font-family: var(--font-nav);
     font-size: 0.9rem;
-    padding: 8px 15px;
 }
