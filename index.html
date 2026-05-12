@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mathieu Lecointre | Accueil</title>
     <link rel="stylesheet" href="style.css">
+    <script>
+        /* Anti-flash blanc pour le mode sombre */
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+    </script>
 </head>
 <body>
 
@@ -21,14 +27,14 @@
     <main>
         <section class="section-container" style="display: flex; align-items: center; gap: 40px; min-height: 60vh;">
             <div style="flex: 1;">
-                <h1 style="font-family: var(--font-title); font-size: 4rem; text-transform: uppercase; line-height: 1;">Mathieu Lecointre</h1>
+                <h1 class="hero-title">Mathieu Lecointre</h1>
                 <h2 style="font-size: 1.5rem; color: var(--text-muted); margin: 15px 0 25px 0; font-weight: 400;">Développeur Front-End & Créatif</h2>
                 <p style="margin-bottom: 30px; font-size: 1.1rem;">
                     Étudiant en BUT Informatique. Je conçois des interfaces web alliant la rigueur du code à un design percutant et accessible. 
                 </p>
                 <div style="display: flex; gap: 15px;">
                     <a href="Pages/realisations.html" class="btn">Voir mes projets</a>
-                    <a href="CV_2026.pdf" target="_blank" class="btn" style="background: var(--card-bg); color: var(--text-color);">Mon CV</a>
+                    <a href="CV_Mathieu_Lecointre.pdf" target="_blank" class="btn" style="background: var(--card-bg); color: var(--text-color);">Mon CV</a>
                 </div>
             </div>
             <div>
@@ -36,20 +42,52 @@
             </div>
         </section>
 
+        <section class="section-container" style="padding-top: 0;">
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                <div class="card" style="padding: 20px;">
+                    <h3 style="font-size: 1.2rem; margin-bottom: 15px;">💻 Stack Technique</h3>
+                    <div class="badges">
+                        <span class="badge">HTML5 / CSS3</span>
+                        <span class="badge">JavaScript</span>
+                        <span class="badge">SQL</span>
+                        <span class="badge">Firebase</span>
+                    </div>
+                </div>
+                <div class="card" style="padding: 20px;">
+                    <h3 style="font-size: 1.2rem; margin-bottom: 15px;">🎨 Outils & Design</h3>
+                    <div class="badges">
+                        <span class="badge" style="background: var(--text-color); color: var(--bg-color);">Figma</span>
+                        <span class="badge" style="background: var(--text-color); color: var(--bg-color);">Canva</span>
+                        <span class="badge" style="background: var(--text-color); color: var(--bg-color);">GitHub</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section class="section-container">
             <h2 class="section-title">Mon Parcours</h2>
             <div class="card" style="padding: 40px;">
                 <div class="timeline-item">
-                    <p class="timeline-date">En cours | IUT</p>
+                    <p class="timeline-date">En cours | IUT d'Amiens</p>
                     <h3 style="margin: 5px 0; font-family: var(--font-title);">BUT Informatique</h3>
                     <p style="margin: 0;">Parcours Développement d'Applications. Conception, développement, et déploiement de solutions logicielles complètes.</p>
                 </div>
                 
                 <div class="timeline-item" style="margin-bottom: 0;">
-                    <p class="timeline-date">Obtenu</p>
+                    <p class="timeline-date">2024</p>
                     <h3 style="margin: 5px 0; font-family: var(--font-title);">Baccalauréat STI2D</h3>
                     <p style="margin: 0;">Sciences et Technologies de l'Industrie et du Développement Durable. Acquisition de solides bases techniques, logiques et analytiques.</p>
                 </div>
+            </div>
+        </section>
+
+        <section class="section-container" style="text-align: center; border-top: 4px dashed var(--border-color); margin-top: 20px; padding-top: 60px;">
+            <h2 style="font-family: var(--font-title); font-size: 2.5rem; text-transform: uppercase; margin-bottom: 20px;">Prêt à explorer la suite ?</h2>
+            <p style="margin-bottom: 30px; font-size: 1.1rem; color: var(--text-muted);">Découvrez mon profil en détail ou passez directement aux choses sérieuses.</p>
+            
+            <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                <a href="Pages/competences.html" class="btn" style="background: var(--accent-yellow); color: black;">Voir mes compétences</a>
+                <a href="Pages/contact.html" class="btn">Discutons de votre projet</a>
             </div>
         </section>
     </main>
