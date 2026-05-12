@@ -357,3 +357,87 @@ main { flex-grow: 1; }
         width: 55%;
     }
 }
+/* =========================================
+   ANIMATIONS COMICS (Style "Spider-Verse")
+   ========================================= */
+
+/* 1. L'EFFET "BAM !" (Pour les titres) */
+@keyframes bamTitle {
+    0% { 
+        opacity: 0; 
+        transform: scale(0.5) rotate(-4deg); 
+    }
+    60% { 
+        opacity: 1; 
+        transform: scale(1.05) rotate(1deg); 
+    }
+    100% { 
+        opacity: 1; 
+        transform: scale(1) rotate(0deg); 
+    }
+}
+
+.hero-title, .section-title {
+    animation: bamTitle 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    opacity: 0;
+    transform-origin: left center;
+}
+
+/* 2. L'EFFET "PANEL DROP" (Pour les cases et cartes) */
+@keyframes panelDrop {
+    0% {
+        opacity: 0;
+        /* La carte arrive d'en bas, légèrement déformée/inclinée */
+        transform: translateY(50px) skewY(3deg); 
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) skewY(0deg); /* Elle claque en place */
+    }
+}
+
+.card, .project-panel, .skill-card, .comp-category {
+    animation: panelDrop 0.4s ease-out forwards;
+    opacity: 0;
+}
+
+/* Gardons le délai en cascade pour ne pas tout charger en même temps */
+.grid > *:nth-child(1), .project-panel:nth-child(1), .comp-category:nth-child(1), .skill-card:nth-child(1) { animation-delay: 0.1s; }
+.grid > *:nth-child(2), .project-panel:nth-child(2), .comp-category:nth-child(2), .skill-card:nth-child(2) { animation-delay: 0.2s; }
+.grid > *:nth-child(3), .comp-category:nth-child(3), .skill-card:nth-child(3) { animation-delay: 0.3s; }
+
+
+/* =========================================
+   HOVERS "DÉFALQUÉS" (Survols extrêmes)
+   ========================================= */
+
+/* Boutons : Effet double ombre (Noir + Jaune Pop) */
+.btn {
+    transition: transform 0.15s ease-out, box-shadow 0.15s ease-out !important;
+}
+
+.btn:hover {
+    transform: translate(-4px, -4px) !important;
+    /* On superpose deux ombres dures pour l'effet BD */
+    box-shadow: 4px 4px 0px var(--border-color), 8px 8px 0px var(--accent-yellow) !important;
+}
+
+/* Cartes et Projets : L'ombre devient rouge sang avec un mouvement plus sec */
+.card, .project-panel, .skill-card {
+    transition: transform 0.15s ease-out, box-shadow 0.15s ease-out, border-color 0.15s ease-out !important;
+}
+
+.card:hover, .project-panel:hover, .skill-card:hover {
+    transform: translate(-5px, -5px) !important;
+    box-shadow: 12px 12px 0px var(--accent-color) !important;
+}
+
+/* Les petits badges (Cubes) font un rebond sec */
+.badge-cube:not(.badge-cube-dashed) {
+    transition: transform 0.1s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.1s ease !important;
+}
+
+.badge-cube:not(.badge-cube-dashed):hover {
+    transform: translate(-3px, -3px) rotate(-2deg) !important;
+    box-shadow: 4px 4px 0px var(--accent-color) !important;
+}
