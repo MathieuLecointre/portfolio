@@ -13,6 +13,12 @@
     --accent-color: #ED1D24; /* Rouge Marvel */
     --accent-hover: #b9151c;
     --accent-yellow: #FFC90E; /* Jaune Comics */
+    
+    /* NOUVELLES COULEURS COMICS POUR LE PEPS */
+    --accent-cyan: #00CFFF;
+    --accent-magenta: #FF007F;
+    --accent-green: #00E676;
+    
     --dot-color: rgba(0, 0, 0, 0.06); /* Points clairs */
     
     --font-main: 'Inter', sans-serif;
@@ -30,6 +36,12 @@
     --accent-color: #ff474d; 
     --accent-hover: #ED1D24;
     --accent-yellow: #FFC90E;
+    
+    /* NOUVELLES COULEURS COMICS (Dark Mode) */
+    --accent-cyan: #00E5FF;
+    --accent-magenta: #FF4081;
+    --accent-green: #69F0AE;
+
     --dot-color: rgba(255, 255, 255, 0.05); /* Points sombres */
 }
 
@@ -158,6 +170,61 @@ main { flex-grow: 1; }
 }
 
 /* =========================================
+   NOUVEAU : INTERACTION PHOTO & BULLE DE BD
+   ========================================= */
+.photo-wrapper {
+    position: relative;
+    margin: 0 auto;
+    padding-top: 20px;
+    cursor: pointer;
+    display: inline-block; /* Pour que le survol soit précis */
+}
+
+.speech-bubble {
+    position: absolute;
+    top: -10px;
+    left: -30px;
+    background: var(--card-bg);
+    border: 4px solid var(--border-color);
+    border-radius: 50%;
+    padding: 15px 25px;
+    font-family: var(--font-title);
+    font-size: 1.2rem;
+    font-weight: bold;
+    box-shadow: 4px 4px 0px var(--accent-yellow);
+    z-index: 10;
+    
+    /* CACHÉ PAR DÉFAUT + ANIMATION FLUIDE */
+    opacity: 0;
+    visibility: hidden;
+    transform: rotate(-5deg) scale(0.8);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* APPARAÎT AU SURVOL DE LA PHOTO */
+.photo-wrapper:hover .speech-bubble {
+    opacity: 1;
+    visibility: visible;
+    transform: rotate(-5deg) scale(1); /* Effet de Pop */
+}
+
+.profile-photo {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    border: 4px solid var(--border-color);
+    box-shadow: 8px 8px 0px var(--accent-color);
+    object-fit: cover;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Optionnel : La photo bouge légèrement au survol aussi */
+.photo-wrapper:hover .profile-photo {
+    transform: translate(-2px, -2px);
+    box-shadow: 10px 10px 0px var(--accent-color);
+}
+
+/* =========================================
    CARTES (Style Comics Pop)
    ========================================= */
 .grid {
@@ -251,17 +318,119 @@ main { flex-grow: 1; }
 .skill-fill { height: 100%; background: var(--accent-color); border-right: 3px solid var(--border-color); }
 
 /* =========================================
-   FOOTER
+   FOOTER (Comics Edition avec réseaux)
    ========================================= */
 .footer {
-    text-align: center;
-    padding: 30px;
     border-top: 4px solid var(--border-color);
     background-color: var(--card-bg);
-    margin-top: 40px;
-    font-family: var(--font-nav);
-    font-size: 0.9rem;
+    margin-top: 60px;
+    padding: 60px 5vw 30px 5vw;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
 }
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    font-family: var(--font-nav);
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-top: 3px dashed var(--border-color);
+    padding-top: 30px;
+}
+
+.footer-copy, .footer-credit {
+    flex: 1; /* Permet d'équilibrer l'espace à gauche et à droite */
+}
+
+.footer-credit {
+    text-align: right;
+}
+
+.footer-socials {
+    display: flex;
+    gap: 15px;
+    flex: 1;
+    justify-content: center;
+}
+
+.social-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-color);
+    text-decoration: none;
+    font-family: var(--font-title);
+    font-size: 1.1rem;
+    padding: 8px 16px;
+    border: 3px solid var(--border-color);
+    background: var(--bg-color);
+    box-shadow: 4px 4px 0px var(--border-color);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.social-btn:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 6px 6px 0px var(--accent-cyan);
+    border-color: var(--accent-cyan);
+    color: var(--text-color);
+}
+
+/* =========================================
+   FOOTER QUOTE : COMIC PANEL
+   ========================================= */
+.footer-comic-panel {
+    position: relative;
+    max-width: 750px; /* Plus large */
+    margin: 0 auto;
+    padding: 20px 40px; /* Beaucoup moins haut (20px) mais large sur les côtés (40px) */
+    border: 3px solid var(--border-color);
+    background-image: 
+        radial-gradient(var(--dot-color) 2px, transparent 2px),
+        linear-gradient(90deg, rgba(0, 207, 255, 0.15) 0%, rgba(255, 201, 14, 0.15) 50%, rgba(255, 0, 127, 0.15) 100%);
+    background-size: 14px 14px, 100% 100%;
+    box-shadow: 6px 6px 0px var(--border-color);
+    transform: rotate(-1deg);
+    overflow: hidden;
+}
+
+/* On adoucit le dégradé pour le mode sombre pour que ça ne flashe pas */
+[data-theme="dark"] .footer-comic-panel {
+    background-image: 
+        radial-gradient(var(--dot-color) 2px, transparent 2px),
+        linear-gradient(90deg, rgba(0, 207, 255, 0.08) 0%, rgba(255, 201, 14, 0.08) 50%, rgba(255, 0, 127, 0.08) 100%);
+}
+
+/* Style des traits d'action (SVG) */
+.panel-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    color: var(--text-color);
+    opacity: 0.5; /* Légèrement transparent pour ne pas gêner la lecture */
+}
+
+/* Le texte façon lettrage BD */
+.panel-text {
+    position: relative;
+    z-index: 1;
+    font-family: var(--font-nav); 
+    font-size: 1.15rem; /* Un poil plus petit */
+    font-weight: 600;
+    color: var(--text-color);
+    line-height: 1.4; /* Lignes plus resserrées */
+    margin: 0;
+    text-align: center;
+    letter-spacing: 0.5px;
+}
+
 /* =========================================
    PANNEAUX DE PROJETS (Réalisations)
    ========================================= */
@@ -357,6 +526,7 @@ main { flex-grow: 1; }
         width: 55%;
     }
 }
+
 /* =========================================
    ANIMATIONS COMICS (Style "Spider-Verse")
    ========================================= */
@@ -440,4 +610,116 @@ main { flex-grow: 1; }
 .badge-cube:not(.badge-cube-dashed):hover {
     transform: translate(-3px, -3px) rotate(-2deg) !important;
     box-shadow: 4px 4px 0px var(--accent-color) !important;
+}
+
+/* =========================================
+   📱 RESPONSIVE (Mobiles & Tablettes) - COMPACT EDITION
+   ========================================= */
+
+/* 1. ANTI-DÉBORDEMENT GLOBAL */
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+/* 2. TABLETTES ET GRANDS MOBILES (Moins de 768px) */
+@media (max-width: 768px) {
+    /* Réduction globale de la typographie */
+    html { font-size: 15px; }
+
+    /* Trame Comics plus fine sur petit écran */
+    body { background-size: 12px 12px; }
+
+    /* Navigation compacte */
+    .navbar { padding: 15px; flex-direction: column; gap: 10px; border-bottom-width: 3px; }
+    .nav-links { flex-wrap: wrap; justify-content: center; gap: 12px; font-size: 0.9rem; }
+    #theme-toggle { top: 15px; right: 15px; width: 32px; height: 32px; font-size: 1rem; border-width: 2px; }
+
+    /* Espacements génériques et grille resserrés */
+    .section-container { padding: 40px 15px; }
+    .grid { gap: 20px; } 
+
+    /* Centrage de l'Accueil */
+    .hero-title { font-size: 2.8rem; text-align: center; }
+    .hero-title + h2, .hero-title ~ p { text-align: center; }
+    .hero-title ~ div { justify-content: center; }
+
+    /* Centrage de la Photo */
+    .photo-wrapper { display: flex; justify-content: center; width: 100%; margin-top: 15px; }
+
+    /* Éléments Comics proportionnels */
+    .card, .project-panel { 
+        padding: 20px; 
+        border-width: 3px; 
+        box-shadow: 6px 6px 0px var(--border-color); 
+    }
+    .card:hover, .project-panel:hover { 
+        transform: translate(-2px, -2px); 
+        box-shadow: 8px 8px 0px var(--accent-magenta); 
+        border-width: 3px;
+    }
+
+    /* Boutons et Badges affinés */
+    .btn { padding: 10px 20px; border-width: 2px; box-shadow: 4px 4px 0px var(--border-color); font-size: 1rem; }
+    .btn:hover { box-shadow: 2px 2px 0px var(--border-color); transform: translate(2px, 2px); }
+    
+    .badge { padding: 4px 10px; font-size: 0.8rem; border-width: 2px; box-shadow: 2px 2px 0px var(--border-color); }
+
+    .section-title { font-size: 2.2rem; margin-bottom: 30px; }
+
+    /* Responsive du Footer */
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+    .footer-copy, .footer-credit, .footer-socials {
+        flex: unset;
+        text-align: center;
+        width: 100%;
+    }
+    
+    /* Le texte du panneau de citation sur mobile */
+    .footer-comic-panel .panel-text {
+        font-size: 1rem !important;
+    }
+}
+
+/* 3. PETITS MOBILES (Moins de 480px) */
+@media (max-width: 480px) {
+    /* Réduction encore plus forte pour les smartphones */
+    html { font-size: 14px; }
+
+    /* Le Titre principal prend moins de place */
+    .hero-title { 
+        font-size: 2.2rem; 
+        -webkit-text-stroke: 1.5px var(--border-color); 
+        text-shadow: 2px 2px 0px var(--accent-magenta), 4px 4px 0px var(--border-color); 
+    }
+    .section-title { font-size: 1.8rem; }
+
+    /* Photo et Bulle plus petites */
+    .profile-photo { width: 160px; height: 160px; border-width: 3px; box-shadow: 6px 6px 0px var(--accent-color); }
+    .speech-bubble { 
+        padding: 8px 16px; font-size: 0.9rem; top: -15px; left: 10px; border-width: 3px; box-shadow: 3px 3px 0px var(--accent-yellow);
+    }
+
+    /* Projets plus denses */
+    .project-info { padding: 20px; }
+    .project-info h3 { font-size: 1.4rem; }
+    .project-context { font-size: 0.85rem; margin-bottom: 15px; }
+
+    /* Timeline affinée */
+    .timeline-item { padding-left: 15px; margin-bottom: 30px; border-left-width: 3px; }
+    .timeline-item::before { left: -10px; width: 16px; height: 16px; border-width: 3px; }
+
+    /* Cartes réduites */
+    .card h3 { font-size: 1.3rem; margin-bottom: 10px; }
+    .card p { font-size: 0.95rem; }
+
+    /* Ergonomie Tactile */
+    .btn { width: 100%; }
+
+    /* Footer réduit pour petit écran */
+    .footer { padding: 40px 15px 20px 15px; font-size: 0.85rem; }
 }

@@ -6,7 +6,6 @@
     <title>Mathieu Lecointre | Accueil</title>
     <link rel="stylesheet" href="style.css">
     <script>
-        /* Anti-flash blanc pour le mode sombre */
         if (localStorage.getItem('theme') === 'dark') {
             document.documentElement.setAttribute('data-theme', 'dark');
         }
@@ -25,31 +24,74 @@
     </nav>
 
     <main>
-        <section class="section-container" style="display: flex; align-items: center; gap: 40px; min-height: 60vh;">
-            <div style="flex: 1;">
-                <h1 class="hero-title">Mathieu Lecointre</h1>
-                <h2 style="font-size: 1.5rem; color: var(--text-muted); margin: 15px 0 25px 0; font-weight: 400;">Développeur Front-End & Créatif</h2>
-                <p style="margin-bottom: 30px; font-size: 1.1rem;">
+        <section class="section-container" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 40px; min-height: 60vh;">
+            
+            <div style="flex: 1; min-width: 300px;">
+                <h1 class="hero-title">Mathieu <br>Lecointre</h1>
+                <h2 style="font-size: 1.5rem; color: var(--text-muted); margin: 15px 0 20px 0; font-weight: 500;">
+                    Développeur Front-End & Créatif
+                </h2>
+                
+                <p style="margin-bottom: 30px; font-size: 1.1rem; max-width: 500px;">
                     Étudiant en BUT Informatique. Je conçois des interfaces web alliant la rigueur du code à un design percutant et accessible. 
                 </p>
-                <div style="display: flex; gap: 15px;">
+
+                <div style="display: flex; gap: 15px; flex-wrap: wrap;">
                     <a href="Pages/realisations.html" class="btn">Voir mes projets</a>
                     <a href="CV_Mathieu_Lecointre.pdf" target="_blank" class="btn" style="background: var(--card-bg); color: var(--text-color);">Mon CV</a>
                 </div>
             </div>
-            <div>
-                <img src="images/photo-profil.jpg" alt="Mathieu" style="width: 250px; height: 250px; border-radius: 50%; border: 4px solid var(--border-color); box-shadow: 8px 8px 0px var(--accent-color); object-fit: cover;">
+            
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 25px; margin: 0 auto;">
+                
+                <div class="photo-wrapper">
+                    <div class="speech-bubble">
+                        Hello !
+                        <div style="position: absolute; bottom: -12px; right: 20px; width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-top: 15px solid var(--border-color); transform: rotate(-30deg);"></div>
+                        <div style="position: absolute; bottom: -6px; right: 23px; width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 10px solid var(--card-bg); transform: rotate(-30deg);"></div>
+                    </div>
+                    
+                    <img src="images/photo-profil.jpg" alt="Mathieu" class="profile-photo">
+                </div>
+
+                <div class="card" style="padding: 20px; width: 100%; max-width: 320px; text-align: left;">
+                    <h3 style="font-family: var(--font-title); font-size: 1.2rem; text-transform: uppercase; color: var(--accent-color); margin-bottom: 10px; border-bottom: 2px solid var(--border-color); padding-bottom: 5px; display: flex; align-items: center; gap: 8px;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                        Recherche de Stage
+                    </h3>
+                    <p style="margin: 0 0 15px 0; font-size: 1.05rem; font-weight: 600; color: var(--text-color);">
+                        Développement Informatique
+                    </p>
+                    <div class="badges" style="margin-bottom: 0;">
+                        <span class="badge" style="background: var(--accent-yellow); color: black;">14 semaines</span>
+                        <span class="badge" style="background: var(--card-bg); color: var(--text-color);">Mars à Juin 2027</span>
+                    </div>
+                </div>
+
             </div>
         </section>
 
-<section class="section-container" style="padding-top: 0;">
+        <section class="section-container" style="padding-top: 0;">
+            <h2 class="section-title">Qui suis-je ?</h2>
+            <div class="card" style="padding: 35px; background: var(--accent-yellow); color: black; border-color: var(--border-color); box-shadow: 8px 8px 0px var(--border-color); transform: rotate(1deg);">
+                <p style="font-size: 1.15rem; font-weight: 500; margin-bottom: 15px; color: black;">
+                    Au-delà des lignes de code, je suis un véritable passionné par la création au sens large. J'aime comprendre comment les choses sont construites, résoudre des problèmes complexes et y apporter une touche esthétique qui fait la différence.
+                </p>
+                <p style="font-size: 1.15rem; font-weight: 500; margin-bottom: 0; color: black;">
+                    Doté d'un esprit d'équipe prononcé et d'une curiosité insatiable, je m'investis pleinement dans les projets qui me tiennent à cœur. Mon but ? Créer des interfaces non seulement fonctionnelles, mais qui marquent les esprits.
+                </p>
+            </div>
+        </section>
+
+        <section class="section-container" style="padding-top: 0;">
             <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
-                <div class="card" style="padding: 20px;">
-                    <h3 style="font-size: 1.2rem; margin-bottom: 15px; display: flex; align-items: center; gap: 8px;">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="16 18 22 12 16 6"></polyline>
-                            <polyline points="8 6 2 12 8 18"></polyline>
-                        </svg>
+                
+                <div class="card" style="padding: 25px;">
+                    <h3 style="font-size: 1.2rem; margin-bottom: 20px; display: flex; align-items: center; gap: 8px;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
                         STACK TECHNIQUE
                     </h3>
                     <div class="badges">
@@ -59,15 +101,10 @@
                         <span class="badge">Firebase</span>
                     </div>
                 </div>
-                <div class="card" style="padding: 20px;">
-                    <h3 style="font-size: 1.2rem; margin-bottom: 15px; display: flex; align-items: center; gap: 8px;">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="13.5" cy="6.5" r=".5" fill="currentColor"></circle>
-                            <circle cx="17.5" cy="10.5" r=".5" fill="currentColor"></circle>
-                            <circle cx="8.5" cy="7.5" r=".5" fill="currentColor"></circle>
-                            <circle cx="6.5" cy="12.5" r=".5" fill="currentColor"></circle>
-                            <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"></path>
-                        </svg>
+
+                <div class="card" style="padding: 25px;">
+                    <h3 style="font-size: 1.2rem; margin-bottom: 20px; display: flex; align-items: center; gap: 8px;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"></circle><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"></circle><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"></circle><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"></circle><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"></path></svg>
                         OUTILS & DESIGN
                     </h3>
                     <div class="badges">
@@ -76,27 +113,40 @@
                         <span class="badge" style="background: var(--text-color); color: var(--bg-color);">GitHub</span>
                     </div>
                 </div>
+
             </div>
         </section>
 
         <section class="section-container">
             <h2 class="section-title">Mon Parcours</h2>
             <div class="card" style="padding: 40px;">
+                
                 <div class="timeline-item">
                     <p class="timeline-date">En cours | IUT d'Amiens</p>
-                    <h3 style="margin: 5px 0; font-family: var(--font-title);">BUT Informatique</h3>
+                    <h3 style="margin: 5px 0; font-family: var(--font-title); font-size: 1.5rem; text-transform: uppercase;">BUT Informatique</h3>
                     <p style="margin: 0;">Parcours Développement d'Applications. Conception, développement, et déploiement de solutions logicielles complètes.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <p class="timeline-date" style="color: var(--text-muted);">Décembre 2025 | Développement Full Stack — IUT d'Amiens</p>
+                    <h3 style="margin: 5px 0; font-family: var(--font-title); font-size: 1.5rem; text-transform: uppercase;">Projet : MonCovoitJV</h3>
+                    <p style="margin: 0; font-weight: 500;">Conception et développement en équipe d'une plateforme web de covoiturage inter-campus. Architecture PHP MVC, base de données MySQL et gestion de projet via méthodes Agiles.</p>
                 </div>
                 
                 <div class="timeline-item" style="margin-bottom: 0;">
                     <p class="timeline-date">2024</p>
-                    <h3 style="margin: 5px 0; font-family: var(--font-title);">Baccalauréat STI2D</h3>
+                    <h3 style="margin: 5px 0; font-family: var(--font-title); font-size: 1.5rem; text-transform: uppercase;">Baccalauréat STI2D</h3>
                     <p style="margin: 0;">Sciences et Technologies de l'Industrie et du Développement Durable. Acquisition de solides bases techniques, logiques et analytiques.</p>
                 </div>
+
             </div>
         </section>
 
-        <section class="section-container" style="text-align: center; border-top: 4px dashed var(--border-color); margin-top: 20px; padding-top: 60px;">
+        <section class="section-container" style="text-align: center; margin-top: 20px; padding-top: 60px;">
+            <div style="background-color: var(--accent-color); color: white; padding: 5px 15px; display: inline-block; font-family: var(--font-title); font-size: 1.2rem; text-transform: uppercase; border: 4px solid var(--border-color); box-shadow: 4px 4px 0px var(--border-color); margin-bottom: 20px; transform: rotate(1deg);">
+                À suivre...
+            </div>
+            
             <h2 style="font-family: var(--font-title); font-size: 2.5rem; text-transform: uppercase; margin-bottom: 20px;">Prêt à explorer la suite ?</h2>
             <p style="margin-bottom: 30px; font-size: 1.1rem; color: var(--text-muted);">Découvrez mon profil en détail ou passez directement aux choses sérieuses.</p>
             
@@ -107,8 +157,42 @@
         </section>
     </main>
 
-    <footer class="footer">
-        <p>© 2026 Mathieu Lecointre. Tous droits réservés.</p>
+<footer class="footer">
+        <div class="footer-comic-panel">
+            <svg class="panel-lines" preserveAspectRatio="none" viewBox="0 0 100 100">
+                <line x1="0" y1="15" x2="12" y2="25" stroke="currentColor" stroke-width="2" vector-effect="non-scaling-stroke" />
+                <line x1="15" y1="0" x2="25" y2="12" stroke="currentColor" stroke-width="2" vector-effect="non-scaling-stroke" />
+                <line x1="100" y1="15" x2="88" y2="25" stroke="currentColor" stroke-width="2" vector-effect="non-scaling-stroke" />
+                <line x1="85" y1="0" x2="75" y2="12" stroke="currentColor" stroke-width="2" vector-effect="non-scaling-stroke" />
+                <line x1="0" y1="85" x2="12" y2="75" stroke="currentColor" stroke-width="2" vector-effect="non-scaling-stroke" />
+                <line x1="15" y1="100" x2="25" y2="88" stroke="currentColor" stroke-width="2" vector-effect="non-scaling-stroke" />
+                <line x1="100" y1="85" x2="88" y2="75" stroke="currentColor" stroke-width="2" vector-effect="non-scaling-stroke" />
+                <line x1="85" y1="100" x2="75" y2="88" stroke="currentColor" stroke-width="2" vector-effect="non-scaling-stroke" />
+            </svg>
+            
+            <p class="panel-text">"La chute n'est pas un échec.<br>L'échec c'est de rester là où on est tombé."</p>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-copy">
+                © 2026 • MATHIEU LECOINTRE
+            </div>
+            
+            <div class="footer-socials">
+                <a href="https://www.linkedin.com/in/mathieu-lecointre" target="_blank" class="social-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                    LINKEDIN
+                </a>
+                <a href="https://github.com/MathieuLecointre" target="_blank" class="social-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                    GITHUB
+                </a>
+            </div>
+
+            <div class="footer-credit">
+                Crafted with ⚡ & Code
+            </div>
+        </div>
     </footer>
 
     <script src="script.js"></script>
