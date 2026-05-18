@@ -9,12 +9,12 @@
     --text-color: #1a1a1a;
     --text-muted: #555555;
     --card-bg: #ffffff;
-    --border-color: #000000; /* Encre noire stricte */
+    --border-color: #000000; /* Encre noire stricte en mode clair */
     --accent-color: #ED1D24; /* Rouge Marvel */
     --accent-hover: #b9151c;
     --accent-yellow: #FFC90E; /* Jaune Comics */
     
-    /* NOUVELLES COULEURS COMICS POUR LE PEPS */
+    /* COULEURS COMICS POUR LE PEPS */
     --accent-cyan: #00CFFF;
     --accent-magenta: #FF007F;
     --accent-green: #00E676;
@@ -32,12 +32,12 @@
     --text-color: #f3f4f6;
     --text-muted: #a0a0a0;
     --card-bg: #2a2a2a;
-    --border-color: #000000; /* Reste noir pour le trait comics */
+    --border-color: #ffffff; /* AJUSTÉ : Les contours deviennent blancs en mode sombre */
     --accent-color: #ff474d; 
     --accent-hover: #ED1D24;
     --accent-yellow: #FFC90E;
     
-    /* NOUVELLES COULEURS COMICS (Dark Mode) */
+    /* COULEURS COMICS (Dark Mode) */
     --accent-cyan: #00E5FF;
     --accent-magenta: #FF4081;
     --accent-green: #69F0AE;
@@ -55,7 +55,7 @@ body {
     color: var(--text-color);
     font-family: var(--font-main);
     line-height: 1.6;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.4s ease, color 0.4s ease;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -73,7 +73,7 @@ main { flex-grow: 1; }
     padding: 25px 5vw;
     background-color: var(--bg-color);
     position: relative;
-    border-bottom: 4px solid var(--border-color); /* Trait plus épais */
+    border-bottom: 4px solid var(--border-color);
 }
 
 .nav-links {
@@ -89,12 +89,12 @@ main { flex-grow: 1; }
     color: var(--text-color);
     padding-bottom: 5px;
     border-bottom: 3px solid transparent;
-    transition: all 0.2s;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .nav-links a:hover { 
     color: var(--accent-color); 
-    transform: translateY(-2px);
+    transform: translateY(-3px);
 }
 
 .nav-links a.active {
@@ -113,12 +113,12 @@ main { flex-grow: 1; }
     font-size: 1.2rem;
     cursor: pointer;
     box-shadow: 2px 2px 0px var(--border-color);
-    transition: all 0.2s ease;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 #theme-toggle:hover {
-    transform: translate(1px, 1px);
-    box-shadow: 1px 1px 0px var(--border-color);
+    transform: translate(2px, 2px);
+    box-shadow: 0px 0px 0px var(--border-color);
 }
 
 /* =========================================
@@ -136,9 +136,9 @@ main { flex-grow: 1; }
     font-size: 4.5rem; 
     text-transform: uppercase; 
     line-height: 1;
-    color: var(--bg-color); /* Couleur inversée */
-    -webkit-text-stroke: 2px var(--border-color); /* Contour noir */
-    text-shadow: 4px 4px 0px var(--accent-color), 6px 6px 0px var(--border-color); /* Ombre pop */
+    color: var(--bg-color); 
+    -webkit-text-stroke: 2px var(--border-color); /* Suivra la couleur blanche en dark mode */
+    text-shadow: 4px 4px 0px var(--accent-color), 6px 6px 0px var(--border-color); 
     margin-bottom: 10px;
 }
 
@@ -170,14 +170,14 @@ main { flex-grow: 1; }
 }
 
 /* =========================================
-   NOUVEAU : INTERACTION PHOTO & BULLE DE BD
+   INTERACTION PHOTO & BULLE DE BD
    ========================================= */
 .photo-wrapper {
     position: relative;
     margin: 0 auto;
     padding-top: 20px;
     cursor: pointer;
-    display: inline-block; /* Pour que le survol soit précis */
+    display: inline-block;
 }
 
 .speech-bubble {
@@ -193,19 +193,16 @@ main { flex-grow: 1; }
     font-weight: bold;
     box-shadow: 4px 4px 0px var(--accent-yellow);
     z-index: 10;
-    
-    /* CACHÉ PAR DÉFAUT + ANIMATION FLUIDE */
     opacity: 0;
     visibility: hidden;
     transform: rotate(-5deg) scale(0.8);
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* APPARAÎT AU SURVOL DE LA PHOTO */
 .photo-wrapper:hover .speech-bubble {
     opacity: 1;
     visibility: visible;
-    transform: rotate(-5deg) scale(1); /* Effet de Pop */
+    transform: rotate(-5deg) scale(1);
 }
 
 .profile-photo {
@@ -215,13 +212,12 @@ main { flex-grow: 1; }
     border: 4px solid var(--border-color);
     box-shadow: 8px 8px 0px var(--accent-color);
     object-fit: cover;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* Optionnel : La photo bouge légèrement au survol aussi */
 .photo-wrapper:hover .profile-photo {
-    transform: translate(-2px, -2px);
-    box-shadow: 10px 10px 0px var(--accent-color);
+    transform: translate(-3px, -3px);
+    box-shadow: 11px 11px 0px var(--accent-color);
 }
 
 /* =========================================
@@ -235,19 +231,12 @@ main { flex-grow: 1; }
 
 .card {
     background-color: var(--card-bg);
-    border: 4px solid var(--border-color); /* Contour très marqué */
-    border-radius: 0px; /* Bords droits pour le style case de BD */
+    border: 4px solid var(--border-color);
+    border-radius: 0px; 
     padding: 30px;
     box-shadow: 8px 8px 0px var(--border-color);
-    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
     display: flex;
     flex-direction: column;
-}
-
-.card:hover {
-    transform: translate(-4px, -4px);
-    box-shadow: 12px 12px 0px var(--accent-color);
-    border-color: var(--accent-color);
 }
 
 .card h3 {
@@ -273,21 +262,14 @@ main { flex-grow: 1; }
     letter-spacing: 1px;
     border: 3px solid var(--border-color);
     box-shadow: 5px 5px 0px var(--border-color);
-    transition: all 0.1s ease;
     text-align: center;
     font-size: 1.1rem;
 }
 
-.btn:hover {
-    transform: translate(3px, 3px);
-    box-shadow: 2px 2px 0px var(--border-color);
-    color: white;
-}
-
 .badges { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
 .badge {
-    background: var(--accent-yellow); /* Badges jaunes peps */
-    color: #000; /* Toujours noir pour la lisibilité sur le jaune */
+    background: var(--accent-yellow);
+    color: #000; 
     border: 2px solid var(--border-color);
     box-shadow: 3px 3px 0px var(--border-color);
     padding: 5px 12px; 
@@ -308,7 +290,7 @@ main { flex-grow: 1; }
 }
 .timeline-item::before {
     content: ''; position: absolute; left: -14px; top: 0px; width: 20px; height: 20px;
-    background-color: var(--accent-yellow); border: 4px solid var(--border-color); border-radius: 0; /* Carré */
+    background-color: var(--accent-yellow); border: 4px solid var(--border-color); border-radius: 0;
 }
 .timeline-date { font-family: var(--font-nav); color: var(--accent-color); font-size: 1rem; font-weight: bold; }
 
@@ -316,7 +298,6 @@ main { flex-grow: 1; }
 .skill-name { display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 8px; font-family: var(--font-title); text-transform: uppercase;}
 .skill-bar { width: 100%; height: 16px; background: var(--bg-color); border: 3px solid var(--border-color); box-shadow: 3px 3px 0px rgba(0,0,0,0.1) inset; overflow: hidden; }
 .skill-fill { height: 100%; background: var(--accent-color); border-right: 3px solid var(--border-color); }
-
 
 /* =========================================
    PANNEAUX DE PROJETS (Réalisations)
@@ -328,19 +309,12 @@ main { flex-grow: 1; }
     border: 4px solid var(--border-color);
     box-shadow: 10px 10px 0px var(--border-color);
     margin-bottom: 50px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-}
-
-.project-panel:hover {
-    transform: translate(-4px, -4px);
-    box-shadow: 14px 14px 0px var(--accent-color);
-    border-color: var(--accent-color);
 }
 
 .project-image {
     width: 100%;
     border-bottom: 4px solid var(--border-color);
-    background-color: var(--bg-color); /* Fond si l'image ne charge pas */
+    background-color: var(--bg-color);
     overflow: hidden;
     position: relative;
 }
@@ -349,13 +323,13 @@ main { flex-grow: 1; }
     width: 100%;
     height: 100%;
     object-fit: cover;
-    aspect-ratio: 16 / 9; /* Format standard écran */
+    aspect-ratio: 16 / 9;
     display: block;
-    transition: transform 0.3s ease;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .project-panel:hover .project-image img {
-    transform: scale(1.05); /* Léger zoom au survol */
+    transform: scale(1.04); 
 }
 
 .project-info {
@@ -384,12 +358,11 @@ main { flex-grow: 1; }
 .project-links {
     display: flex;
     gap: 15px;
-    margin-top: auto; /* Force les boutons à rester en bas */
+    margin-top: auto;
     padding-top: 25px;
     flex-wrap: wrap;
 }
 
-/* Bouton secondaire (pour le code source) */
 .btn-outline {
     background-color: var(--card-bg);
     color: var(--text-color);
@@ -399,39 +372,19 @@ main { flex-grow: 1; }
     color: black;
 }
 
-/* Version PC : Image à gauche, texte à droite */
 @media (min-width: 768px) {
-    .project-panel {
-        flex-direction: row;
-    }
-    .project-image {
-        width: 45%;
-        border-bottom: none;
-        border-right: 4px solid var(--border-color);
-    }
-    .project-info {
-        width: 55%;
-    }
+    .project-panel { flex-direction: row; }
+    .project-image { width: 45%; border-bottom: none; border-right: 4px solid var(--border-color); }
+    .project-info { width: 55%; }
 }
 
 /* =========================================
-   ANIMATIONS COMICS (Style "Spider-Verse")
+   ANIMATIONS GLOBAUX
    ========================================= */
-
-/* 1. L'EFFET "BAM !" (Pour les titres) */
 @keyframes bamTitle {
-    0% { 
-        opacity: 0; 
-        transform: scale(0.5) rotate(-4deg); 
-    }
-    60% { 
-        opacity: 1; 
-        transform: scale(1.05) rotate(1deg); 
-    }
-    100% { 
-        opacity: 1; 
-        transform: scale(1) rotate(0deg); 
-    }
+    0% { opacity: 0; transform: scale(0.5) rotate(-4deg); }
+    60% { opacity: 1; transform: scale(1.05) rotate(1deg); }
+    100% { opacity: 1; transform: scale(1) rotate(0deg); }
 }
 
 .hero-title, .section-title {
@@ -440,17 +393,9 @@ main { flex-grow: 1; }
     transform-origin: left center;
 }
 
-/* 2. L'EFFET "PANEL DROP" (Pour les cases et cartes) */
 @keyframes panelDrop {
-    0% {
-        opacity: 0;
-        /* La carte arrive d'en bas, légèrement déformée/inclinée */
-        transform: translateY(50px) skewY(3deg); 
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0) skewY(0deg); /* Elle claque en place */
-    }
+    0% { opacity: 0; transform: translateY(50px) skewY(3deg); }
+    100% { opacity: 1; transform: translateY(0) skewY(0deg); }
 }
 
 .card, .project-panel, .skill-card, .comp-category {
@@ -458,49 +403,44 @@ main { flex-grow: 1; }
     opacity: 0;
 }
 
-/* Gardons le délai en cascade pour ne pas tout charger en même temps */
 .grid > *:nth-child(1), .project-panel:nth-child(1), .comp-category:nth-child(1), .skill-card:nth-child(1) { animation-delay: 0.1s; }
 .grid > *:nth-child(2), .project-panel:nth-child(2), .comp-category:nth-child(2), .skill-card:nth-child(2) { animation-delay: 0.2s; }
 .grid > *:nth-child(3), .comp-category:nth-child(3), .skill-card:nth-child(3) { animation-delay: 0.3s; }
 
-
 /* =========================================
-   HOVERS "DÉFALQUÉS" (Survols extrêmes)
+   HOVERS ULTRA FLUIDES (CUBIC-BEZIER)
    ========================================= */
 
-/* Boutons : Effet double ombre (Noir + Jaune Pop) */
+/* Gros Boutons (Inertie : 0.6s) */
 .btn {
-    transition: transform 0.15s ease-out, box-shadow 0.15s ease-out !important;
+    transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1) !important;
 }
-
 .btn:hover {
     transform: translate(-4px, -4px) !important;
-    /* On superpose deux ombres dures pour l'effet BD */
     box-shadow: 4px 4px 0px var(--border-color), 8px 8px 0px var(--accent-yellow) !important;
 }
 
-/* Cartes et Projets : L'ombre devient rouge sang avec un mouvement plus sec */
+/* Cartes / Projets (Inertie : 0.6s) */
 .card, .project-panel, .skill-card {
-    transition: transform 0.15s ease-out, box-shadow 0.15s ease-out, border-color 0.15s ease-out !important;
+    transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1) !important;
 }
-
 .card:hover, .project-panel:hover, .skill-card:hover {
     transform: translate(-5px, -5px) !important;
     box-shadow: 12px 12px 0px var(--accent-color) !important;
+    border-color: var(--accent-color) !important;
 }
 
-/* Les petits badges (Cubes) font un rebond sec */
+/* Badges Cubes (Inertie : 0.3s) */
 .badge-cube:not(.badge-cube-dashed) {
-    transition: transform 0.1s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.1s ease !important;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
 }
-
 .badge-cube:not(.badge-cube-dashed):hover {
-    transform: translate(-3px, -3px) rotate(-2deg) !important;
+    transform: translate(-3px, -3px) !important;
     box-shadow: 4px 4px 0px var(--accent-color) !important;
 }
 
 /* =========================================
-   NOUVEAU FOOTER (Citation droite + Carrés jaunes)
+   FOOTER (Citation droite + Carrés)
    ========================================= */
 .footer {
     margin-top: 60px;
@@ -509,7 +449,7 @@ main { flex-grow: 1; }
     flex-direction: column;
     align-items: center;
     gap: 30px;
-    background-color: transparent; /* Laisse voir la trame de fond */
+    background-color: transparent;
 }
 
 .footer-quote-box {
@@ -522,7 +462,7 @@ main { flex-grow: 1; }
 }
 
 .footer-quote-box p {
-    font-family: var(--font-nav); /* Fira Code, effet machine à écrire */
+    font-family: var(--font-nav);
     font-size: 1.2rem;
     font-weight: 600;
     color: var(--text-color);
@@ -544,87 +484,41 @@ main { flex-grow: 1; }
     width: 55px;
     height: 55px;
     background-color: var(--accent-yellow);
-    color: #000; /* Les icônes restent toujours noires pour le contraste Comics */
+    color: #000; 
     border: 4px solid var(--border-color);
     box-shadow: 4px 4px 0px var(--border-color);
-    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .social-square-btn:hover {
-    transform: translate(-3px, -3px);
+    transform: translate(-4px, -4px);
     box-shadow: 6px 6px 0px var(--accent-cyan);
 }
 
-.social-square-btn svg {
-    width: 24px;
-    height: 24px;
-}
-
-.footer-copy {
-    font-family: var(--font-nav);
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--text-color);
-    text-transform: uppercase;
-    margin-top: 20px;
-}
+.social-square-btn svg { width: 24px; height: 24px; }
+.footer-copy { font-family: var(--font-nav); font-size: 1rem; font-weight: 600; color: var(--text-color); text-transform: uppercase; margin-top: 20px; }
 
 /* =========================================
    📱 RESPONSIVE (Mobiles & Tablettes)
    ========================================= */
+html, body { overflow-x: hidden; width: 100%; }
 
-/* 1. ANTI-DÉBORDEMENT GLOBAL */
-html, body {
-    overflow-x: hidden;
-    width: 100%;
-}
-
-/* 2. TABLETTES ET GRANDS MOBILES (Moins de 768px) */
 @media (max-width: 768px) {
-    /* Réduction globale de la typographie */
     html { font-size: 15px; }
-
-    /* Trame Comics plus fine sur petit écran */
     body { background-size: 12px 12px; }
-
-    /* Navigation compacte */
     .navbar { padding: 15px; flex-direction: column; gap: 10px; border-bottom-width: 3px; }
     .nav-links { flex-wrap: wrap; justify-content: center; gap: 12px; font-size: 0.9rem; }
     #theme-toggle { top: 15px; right: 15px; width: 32px; height: 32px; font-size: 1rem; border-width: 2px; }
-
-    /* Espacements génériques et grille resserrés */
     .section-container { padding: 40px 15px; }
     .grid { gap: 20px; } 
-
-    /* Centrage de l'Accueil */
     .hero-title { font-size: 2.8rem; text-align: center; }
-    .hero-title + h2, .hero-title ~ p { text-align: center; }
-    .hero-title ~ div { justify-content: center; }
-
-    /* Centrage de la Photo */
     .photo-wrapper { display: flex; justify-content: center; width: 100%; margin-top: 15px; }
-
-    /* Éléments Comics proportionnels */
-    .card, .project-panel { 
-        padding: 20px; 
-        border-width: 3px; 
-        box-shadow: 6px 6px 0px var(--border-color); 
-    }
-    .card:hover, .project-panel:hover { 
-        transform: translate(-2px, -2px); 
-        box-shadow: 8px 8px 0px var(--accent-magenta); 
-        border-width: 3px;
-    }
-
-    /* Boutons et Badges affinés */
+    .card, .project-panel { padding: 20px; border-width: 3px; box-shadow: 6px 6px 0px var(--border-color); }
+    .card:hover, .project-panel:hover { transform: translate(-2px, -2px) !important; box-shadow: 8px 8px 0px var(--accent-magenta) !important; border-width: 3px !important; }
     .btn { padding: 10px 20px; border-width: 2px; box-shadow: 4px 4px 0px var(--border-color); font-size: 1rem; }
-    .btn:hover { box-shadow: 2px 2px 0px var(--border-color); transform: translate(2px, 2px); }
-    
+    .btn:hover { box-shadow: 2px 2px 0px var(--border-color) !important; transform: translate(2px, 2px) !important; }
     .badge { padding: 4px 10px; font-size: 0.8rem; border-width: 2px; box-shadow: 2px 2px 0px var(--border-color); }
-
     .section-title { font-size: 2.2rem; margin-bottom: 30px; }
-
-    /* Responsive du nouveau Footer */
     .footer { padding: 40px 5vw; }
     .footer-quote-box { padding: 20px; }
     .footer-quote-box p { font-size: 1.05rem; }
@@ -632,42 +526,20 @@ html, body {
     .social-square-btn svg { width: 20px; height: 20px; }
 }
 
-/* 3. PETITS MOBILES (Moins de 480px) */
 @media (max-width: 480px) {
-    /* Réduction encore plus forte pour les smartphones */
     html { font-size: 14px; }
-
-    /* Le Titre principal prend moins de place */
-    .hero-title { 
-        font-size: 2.2rem; 
-        -webkit-text-stroke: 1.5px var(--border-color); 
-        text-shadow: 2px 2px 0px var(--accent-magenta), 4px 4px 0px var(--border-color); 
-    }
+    .hero-title { font-size: 2.2rem; -webkit-text-stroke: 1.5px var(--border-color); text-shadow: 2px 2px 0px var(--accent-magenta), 4px 4px 0px var(--border-color); }
     .section-title { font-size: 1.8rem; }
-
-    /* Photo et Bulle plus petites */
     .profile-photo { width: 160px; height: 160px; border-width: 3px; box-shadow: 6px 6px 0px var(--accent-color); }
-    .speech-bubble { 
-        padding: 8px 16px; font-size: 0.9rem; top: -15px; left: 10px; border-width: 3px; box-shadow: 3px 3px 0px var(--accent-yellow);
-    }
-
-    /* Projets plus denses */
+    .speech-bubble { padding: 8px 16px; font-size: 0.9rem; top: -15px; left: 10px; border-width: 3px; box-shadow: 3px 3px 0px var(--accent-yellow); }
     .project-info { padding: 20px; }
     .project-info h3 { font-size: 1.4rem; }
     .project-context { font-size: 0.85rem; margin-bottom: 15px; }
-
-    /* Timeline affinée */
     .timeline-item { padding-left: 15px; margin-bottom: 30px; border-left-width: 3px; }
     .timeline-item::before { left: -10px; width: 16px; height: 16px; border-width: 3px; }
-
-    /* Cartes réduites */
     .card h3 { font-size: 1.3rem; margin-bottom: 10px; }
     .card p { font-size: 0.95rem; }
-
-    /* Ergonomie Tactile */
     .btn { width: 100%; }
-
-    /* Footer réduit pour petit écran */
     .footer { padding: 20px 15px 40px 15px; gap: 20px; }
     .footer-copy { font-size: 0.85rem; }
 }
