@@ -317,119 +317,6 @@ main { flex-grow: 1; }
 .skill-bar { width: 100%; height: 16px; background: var(--bg-color); border: 3px solid var(--border-color); box-shadow: 3px 3px 0px rgba(0,0,0,0.1) inset; overflow: hidden; }
 .skill-fill { height: 100%; background: var(--accent-color); border-right: 3px solid var(--border-color); }
 
-/* =========================================
-   FOOTER (Comics Edition avec réseaux)
-   ========================================= */
-.footer {
-    border-top: 4px solid var(--border-color);
-    background-color: var(--card-bg);
-    margin-top: 60px;
-    padding: 60px 5vw 30px 5vw;
-    display: flex;
-    flex-direction: column;
-    gap: 50px;
-}
-
-.footer-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
-    font-family: var(--font-nav);
-    font-size: 0.95rem;
-    font-weight: 500;
-    border-top: 3px dashed var(--border-color);
-    padding-top: 30px;
-}
-
-.footer-copy, .footer-credit {
-    flex: 1; /* Permet d'équilibrer l'espace à gauche et à droite */
-}
-
-.footer-credit {
-    text-align: right;
-}
-
-.footer-socials {
-    display: flex;
-    gap: 15px;
-    flex: 1;
-    justify-content: center;
-}
-
-.social-btn {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: var(--text-color);
-    text-decoration: none;
-    font-family: var(--font-title);
-    font-size: 1.1rem;
-    padding: 8px 16px;
-    border: 3px solid var(--border-color);
-    background: var(--bg-color);
-    box-shadow: 4px 4px 0px var(--border-color);
-    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-}
-
-.social-btn:hover {
-    transform: translate(-3px, -3px);
-    box-shadow: 6px 6px 0px var(--accent-cyan);
-    border-color: var(--accent-cyan);
-    color: var(--text-color);
-}
-
-/* =========================================
-   FOOTER QUOTE : COMIC PANEL
-   ========================================= */
-.footer-comic-panel {
-    position: relative;
-    max-width: 750px; /* Plus large */
-    margin: 0 auto;
-    padding: 20px 40px; /* Beaucoup moins haut (20px) mais large sur les côtés (40px) */
-    border: 3px solid var(--border-color);
-    background-image: 
-        radial-gradient(var(--dot-color) 2px, transparent 2px),
-        linear-gradient(90deg, rgba(0, 207, 255, 0.15) 0%, rgba(255, 201, 14, 0.15) 50%, rgba(255, 0, 127, 0.15) 100%);
-    background-size: 14px 14px, 100% 100%;
-    box-shadow: 6px 6px 0px var(--border-color);
-    transform: rotate(-1deg);
-    overflow: hidden;
-}
-
-/* On adoucit le dégradé pour le mode sombre pour que ça ne flashe pas */
-[data-theme="dark"] .footer-comic-panel {
-    background-image: 
-        radial-gradient(var(--dot-color) 2px, transparent 2px),
-        linear-gradient(90deg, rgba(0, 207, 255, 0.08) 0%, rgba(255, 201, 14, 0.08) 50%, rgba(255, 0, 127, 0.08) 100%);
-}
-
-/* Style des traits d'action (SVG) */
-.panel-lines {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    color: var(--text-color);
-    opacity: 0.5; /* Légèrement transparent pour ne pas gêner la lecture */
-}
-
-/* Le texte façon lettrage BD */
-.panel-text {
-    position: relative;
-    z-index: 1;
-    font-family: var(--font-nav); 
-    font-size: 1.15rem; /* Un poil plus petit */
-    font-weight: 600;
-    color: var(--text-color);
-    line-height: 1.4; /* Lignes plus resserrées */
-    margin: 0;
-    text-align: center;
-    letter-spacing: 0.5px;
-}
 
 /* =========================================
    PANNEAUX DE PROJETS (Réalisations)
@@ -613,7 +500,77 @@ main { flex-grow: 1; }
 }
 
 /* =========================================
-   📱 RESPONSIVE (Mobiles & Tablettes) - COMPACT EDITION
+   NOUVEAU FOOTER (Citation droite + Carrés jaunes)
+   ========================================= */
+.footer {
+    margin-top: 60px;
+    padding: 60px 5vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    background-color: transparent; /* Laisse voir la trame de fond */
+}
+
+.footer-quote-box {
+    background-color: var(--card-bg);
+    border: 4px solid var(--border-color);
+    box-shadow: 6px 6px 0px var(--border-color);
+    padding: 25px 40px;
+    max-width: 700px;
+    text-align: center;
+}
+
+.footer-quote-box p {
+    font-family: var(--font-nav); /* Fira Code, effet machine à écrire */
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin: 0;
+    line-height: 1.6;
+}
+
+.footer-socials {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.social-square-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 55px;
+    height: 55px;
+    background-color: var(--accent-yellow);
+    color: #000; /* Les icônes restent toujours noires pour le contraste Comics */
+    border: 4px solid var(--border-color);
+    box-shadow: 4px 4px 0px var(--border-color);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.social-square-btn:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 6px 6px 0px var(--accent-cyan);
+}
+
+.social-square-btn svg {
+    width: 24px;
+    height: 24px;
+}
+
+.footer-copy {
+    font-family: var(--font-nav);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-color);
+    text-transform: uppercase;
+    margin-top: 20px;
+}
+
+/* =========================================
+   📱 RESPONSIVE (Mobiles & Tablettes)
    ========================================= */
 
 /* 1. ANTI-DÉBORDEMENT GLOBAL */
@@ -667,22 +624,12 @@ html, body {
 
     .section-title { font-size: 2.2rem; margin-bottom: 30px; }
 
-    /* Responsive du Footer */
-    .footer-bottom {
-        flex-direction: column;
-        text-align: center;
-        gap: 30px;
-    }
-    .footer-copy, .footer-credit, .footer-socials {
-        flex: unset;
-        text-align: center;
-        width: 100%;
-    }
-    
-    /* Le texte du panneau de citation sur mobile */
-    .footer-comic-panel .panel-text {
-        font-size: 1rem !important;
-    }
+    /* Responsive du nouveau Footer */
+    .footer { padding: 40px 5vw; }
+    .footer-quote-box { padding: 20px; }
+    .footer-quote-box p { font-size: 1.05rem; }
+    .social-square-btn { width: 45px; height: 45px; border-width: 3px; }
+    .social-square-btn svg { width: 20px; height: 20px; }
 }
 
 /* 3. PETITS MOBILES (Moins de 480px) */
@@ -721,5 +668,6 @@ html, body {
     .btn { width: 100%; }
 
     /* Footer réduit pour petit écran */
-    .footer { padding: 40px 15px 20px 15px; font-size: 0.85rem; }
+    .footer { padding: 20px 15px 40px 15px; gap: 20px; }
+    .footer-copy { font-size: 0.85rem; }
 }
