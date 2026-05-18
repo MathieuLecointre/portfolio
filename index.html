@@ -24,53 +24,60 @@
     </nav>
 
     <main>
-        <section class="section-container" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 40px; min-height: 60vh;">
+        <section class="section-container" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 50px; min-height: 60vh;">
             
-            <div style="flex: 1; min-width: 300px;">
+            <div style="flex: 1; min-width: 320px;">
                 <h1 class="hero-title">Mathieu <br>Lecointre</h1>
-                <h2 style="font-size: 1.5rem; color: var(--text-muted); margin: 15px 0 20px 0; font-weight: 500;">
+                
+                <h2 style="font-size: 1.6rem; color: var(--accent-color); font-family: var(--font-title); text-transform: uppercase; letter-spacing: 1px; margin: 10px 0 20px 0;">
                     Développeur Front-End & Créatif
                 </h2>
                 
-                <p style="margin-bottom: 30px; font-size: 1.1rem; max-width: 500px;">
-                    Étudiant en BUT Informatique. Je conçois des interfaces web alliant la rigueur du code à un design percutant et accessible. 
+                <p style="margin-bottom: 35px; font-size: 1.15rem; max-width: 520px; line-height: 1.7; color: var(--text-color);">
+                    Étudiant en BUT Informatique. Je traduis des idées complexes en interfaces web fluides et mémorables. Mon terrain de jeu ? Allier une <strong>rigueur architecturale</strong> implacable à une <strong>esthétique pop et accessible</strong>.
                 </p>
 
                 <div style="display: flex; gap: 15px; flex-wrap: wrap;">
                     <a href="Pages/realisations.html" class="btn">Voir mes projets</a>
-                    <a href="CV_Mathieu_Lecointre.pdf" target="_blank" class="btn" style="background: var(--card-bg); color: var(--text-color);">Mon CV</a>
+                    <a href="CV_Mathieu_Lecointre.pdf" target="_blank" class="btn" style="background: var(--bg-color); color: var(--text-color); border-style: dashed;">Mon CV</a>
                 </div>
             </div>
             
-            <div style="display: flex; flex-direction: column; align-items: center; gap: 25px; margin: 0 auto;">
+            <div style="flex: 1; display: flex; justify-content: center; min-width: 300px; padding-top: 100px;">
                 
-                <div class="photo-wrapper">
-                    <div class="speech-bubble">
-                        Hello !
-                        <div style="position: absolute; bottom: -12px; right: 20px; width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-top: 15px solid var(--border-color); transform: rotate(-30deg);"></div>
-                        <div style="position: absolute; bottom: -6px; right: 23px; width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 10px solid var(--card-bg); transform: rotate(-30deg);"></div>
+                <div class="card" style="position: relative; width: 100%; max-width: 380px; padding: 150px 30px 35px 30px; text-align: center; border: 4px solid var(--border-color); box-shadow: 8px 8px 0px var(--accent-yellow);">
+                    
+                    <div class="photo-wrapper" style="position: absolute; top: -110px; left: 50%; margin-left: -125px; width: 250px; height: 250px; z-index: 5;">
+                        
+                        <div class="speech-bubble" style="top: -15px; right: -20px; left: auto; border-radius: 50px; padding: 8px 20px; font-size: 1.15rem; border: 3px solid var(--border-color); box-shadow: 3px 3px 0px var(--accent-yellow);">
+                            Hello!
+                            <div style="position: absolute; bottom: -12px; left: 15px; width: 0; height: 0; border-left: 8px solid transparent; border-right: 8px solid transparent; border-top: 14px solid var(--border-color); transform: rotate(15deg);"></div>
+                            <div style="position: absolute; bottom: -7px; left: 17px; width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 10px solid var(--card-bg); transform: rotate(15deg); z-index: 2;"></div>
+                        </div>
+                        
+                        <img src="images/photo-profil.jpg" alt="Mathieu" style="width: 100%; height: 100%; object-fit: cover; border: 4px solid var(--border-color); display: block; background-color: var(--bg-color);">
+                    </div>
+
+                    <div style="display: inline-block; border: 4px solid var(--border-color); padding: 8px 20px; margin-bottom: 12px; background-color: var(--accent-color); border-radius: 0px; box-shadow: 4px 4px 0px var(--border-color);">
+                        <span style="font-family: var(--font-title); font-size: 1.25rem; text-transform: uppercase; color: white; font-weight: bold; letter-spacing: 0.5px;">
+                            Recherche de Stage
+                        </span>
                     </div>
                     
-                    <img src="images/photo-profil.jpg" alt="Mathieu" class="profile-photo">
-                </div>
-
-                <div class="card" style="padding: 20px; width: 100%; max-width: 320px; text-align: left;">
-                    <h3 style="font-family: var(--font-title); font-size: 1.2rem; text-transform: uppercase; color: var(--accent-color); margin-bottom: 10px; border-bottom: 2px solid var(--border-color); padding-bottom: 5px; display: flex; align-items: center; gap: 8px;">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="11" cy="11" r="8"></circle>
-                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                        </svg>
-                        Recherche de Stage
-                    </h3>
-                    <p style="margin: 0 0 15px 0; font-size: 1.05rem; font-weight: 600; color: var(--text-color);">
-                        Développement Informatique
+                    <p style="margin: 0 0 15px 0; font-size: 1rem; font-weight: 600; color: var(--text-color);">
+                        Développement Informatique & Web
                     </p>
-                    <div class="badges" style="margin-bottom: 0;">
-                        <span class="badge" style="background: var(--accent-yellow); color: black;">14 semaines</span>
-                        <span class="badge" style="background: var(--card-bg); color: var(--text-color);">Mars à Juin 2027</span>
+                    
+                    <div style="position: relative; background-color: var(--accent-yellow); color: #000; border: 3px solid var(--border-color); box-shadow: 4px 4px 0px var(--border-color); padding: 12px 10px; overflow: hidden; transform: rotate(-1deg);">
+                        
+                        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: radial-gradient(rgba(0, 207, 255, 0.4) 1.5px, transparent 1.5px), radial-gradient(rgba(255, 0, 127, 0.4) 1.5px, transparent 1.5px); background-size: 12px 12px; background-position: 0 0, 6px 6px; opacity: 0.5; pointer-events: none;"></div>
+                        
+                        <span style="position: relative; z-index: 1; font-family: var(--font-nav); font-size: 1rem; font-weight: 600;">
+                            14 semaines • Mars à Juin 2027
+                        </span>
                     </div>
-                </div>
 
+                </div>
             </div>
         </section>
 
@@ -157,7 +164,7 @@
         </section>
     </main>
 
-<footer class="footer">
+    <footer class="footer">
         <div class="footer-quote-box">
             <p>"La chute n'est pas un échec. L'échec c'est de rester là où on est tombé."</p>
         </div>
